@@ -11,11 +11,19 @@ read_and_add:
   call    readi32
   mov     %eax, -8(%ebp)
 
+  xor     %eax, %eax
+  add     -4(%ebp), %eax
+  add     -8(%ebp), %eax
 
-   
+  mov     %ebp, %esp
 
+  pop     %ebp
 
+  ret
 
   .global main
 main:
+  call    read_and_add
+  call    writei32
+  call    finish
 
